@@ -10,4 +10,5 @@ public interface RoleService {
     List<Role> getAllRoles();
     Role createRole(Role role);
     Optional<Role> updateRole(Role role);
+    String deleteRole(Integer id);
 }

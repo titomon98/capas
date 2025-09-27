@@ -35,4 +35,11 @@ public class RoleController {
     public Optional<Role> updateRole(@RequestBody Role role){
         return roleService.updateRole(role);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteRole(@PathVariable Integer id){
+        return roleService.deleteRole(id);
+    }
+
+    //TRATEN DE RESPETAR SIEMPRE MAYUSCULAS Y MINUSCULAS EN SUS VARIABLES
 }

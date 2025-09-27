@@ -54,4 +54,14 @@ public class RoleServiceImpl implements RoleService { //Se conecta con la siguie
 
         return Optional.of(roleRepository.save(updatedRole));
     }
+
+    @Override
+    public String deleteRole(Integer id) {
+        Optional<Role> roleValidation = roleRepository.findById(id);
+        if (roleValidation.isEmpty()) {
+            return "No se eliminó porque no existía";
+        }
+        roleRepository.deleteById(id);
+        return "Rol eliminado correctamente";
+    }
 }
