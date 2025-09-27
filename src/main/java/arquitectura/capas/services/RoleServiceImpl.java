@@ -4,6 +4,7 @@ import arquitectura.capas.entities.Role;
 import arquitectura.capas.repositories.roleRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,5 +37,21 @@ public class RoleServiceImpl implements RoleService { //Se conecta con la siguie
         return roleRepository.save(role);
     }
 
+    @Override
+    public Optional<Role> updateRole(Role role) {
+        Optional<Role> roleValidation = roleRepository.findById(role.getId());
 
+        if (roleValidation.isEmpty()) {
+            return Optional.empty();
+        }
+        //Tomar el objeto Role de Optional<Role>
+        Role updatedRole = roleValidation.get();
+        //Poner los nuevos datos
+        updatedRole.setType(role.getType());
+        updatedRole.setDescription(role.getDescription());
+        updatedRole.setStatus(role.getStatus());
+        updatedRole.setUpdatedAt(LocalDateTime.now());
+
+        return Optional.of(roleRepository.save(updatedRole));
+    }
 }

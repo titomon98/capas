@@ -9,4 +9,5 @@ public interface RoleService {
     Optional<Role> getRoleById(Integer id);
     List<Role> getAllRoles();
     Role createRole(Role role);
+    Optional<Role> updateRole(Role role);
 }

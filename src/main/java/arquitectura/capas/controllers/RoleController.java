@@ -30,4 +30,9 @@ public class RoleController {
     public Role createRole(@RequestBody Role role){
         return roleService.createRole(role);
     }
+
+    @PutMapping("/update")
+    public Optional<Role> updateRole(@RequestBody Role role){
+        return roleService.updateRole(role);
+    }
 }
