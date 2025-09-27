@@ -4,6 +4,7 @@ import arquitectura.capas.entities.Role;
 import arquitectura.capas.services.RoleService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,5 +19,15 @@ public class RoleController {
     @GetMapping("/{id}")
     public Optional<Role> getRoleById(@PathVariable Integer id){
         return roleService.getRoleById(id);
+    }
+
+    @GetMapping("/all")
+    public List<Role> getAllRoles(){
+        return roleService.getAllRoles();
+    }
+
+    @PostMapping("/create")
+    public Role createRole(@RequestBody Role role){
+        return roleService.createRole(role);
     }
 }
